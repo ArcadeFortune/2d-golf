@@ -26,7 +26,6 @@ function StartAnimation({ startFunction }) {
           <br />
           <br />
           <br />
-          <br />
 
           <button className={animationSkipped ? "btnRight" : "btnRight playMeBtn"} onClick={startFunction}>
             Yes, Play!

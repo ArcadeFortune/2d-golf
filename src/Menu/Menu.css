@@ -23,7 +23,7 @@ span {
   left: 50%;
   width: 17%;
   min-width: 250px;
-  max-width: 300px;
+  max-width: 270px;
   transform: translate(-50%, -50%) scale(2.2);
 }
 
