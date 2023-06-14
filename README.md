@@ -4,7 +4,7 @@ Welcome to my BETTER 2D Golf, but its not really golf...
 
 ## Play
 
-Simply open [linkNotImplementedYet](https://better-golf.vercel.app) and enjoy!
+Simply open [better-golf.vercel.app](https://better-golf.vercel.app) and enjoy!
 
 ## How to play
 
