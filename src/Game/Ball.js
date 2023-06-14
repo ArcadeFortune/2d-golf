@@ -1,6 +1,8 @@
+import "./Game.css";
+
 function Ball() {
   return (
-    <div>CUBE</div>
+    <div className="ball"></div>
   );
 }
 
