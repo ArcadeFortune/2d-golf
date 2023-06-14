@@ -6,12 +6,9 @@ function Menu({ LoadGame }) {
   function start() {
     setInGame(true);
   }
-  if (inGame) {
-    return <LoadGame />;
-  } else {
-    return <button onClick={start}>START</button>;
-  }
+  return (
+    inGame ? <LoadGame /> : <button onClick={start}>START</button>
+  )
 }
 
 export default Menu;
-// inGame ? <button onClick={start}>START</button> : <div>GAME</div>
