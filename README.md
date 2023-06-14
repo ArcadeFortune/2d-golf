@@ -1,6 +1,26 @@
-# Getting Started with Create React App
+# Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my BETTER 2D Golf, but its not really golf...
+
+## Play
+
+Simply open [linkNotImplementedYet](https://zoro.to/watch/date-a-live-2508?ep=27962) and enjoy!
+
+## How to play
+
+### Goal
+
+Get into the pole safely! Try to dodge all the obstacles
+
+### Controls
+
+not implemented yet
+
+## Trivia
+
+Clicking skips the animation at the beginning
+
+# How to host it yourself
 
 ## Available Scripts
 

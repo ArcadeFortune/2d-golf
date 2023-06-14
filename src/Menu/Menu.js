@@ -5,6 +5,7 @@ import StartAnimation from './StartAnimation';
 function Menu({ LoadGame }) {
   const [inGame, setInGame] = useState(false);
   function start() {
+    // Starts the game when the specific button is clicked
     setInGame(true);
   }
   return (

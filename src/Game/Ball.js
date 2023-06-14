@@ -1,7 +1,7 @@
-function Game() {
+function Ball() {
   return (
     <div>CUBE</div>
   );
 }
 
-export default Game;
+export default Ball;
