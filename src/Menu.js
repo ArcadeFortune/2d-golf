@@ -8,9 +8,7 @@ function Menu({ LoadGame }) {
     setInGame(true);
   }
   return (
-    <div className="mainMenu">
-      {inGame ? <LoadGame /> : <StartAnimation startFunction={start}/>}
-    </div>
+    inGame ? <LoadGame /> : <StartAnimation startFunction={start}/>
   )
 }
 

@@ -3,6 +3,8 @@ import { hover } from "@testing-library/user-event/dist/hover";
 function StartAnimation({ startFunction }) {
   return (
     <>
+    
+    <div className="mainMenu">
       <div className="startAnimation">
         <h1>
           <span className="hello">Hello,</span> <span className="you">YOU</span>
@@ -23,6 +25,7 @@ function StartAnimation({ startFunction }) {
         <button className="btnRight" onClick={startFunction}>Yes, Play!</button>
         <button className="btnLeft" onClick={startFunction}>play anyway</button>
       </div>
+    </div>
     </>
   );
 }
