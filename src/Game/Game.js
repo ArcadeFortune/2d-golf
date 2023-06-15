@@ -1,6 +1,8 @@
 import React from "react";
 import { useRef } from "react";
+
 import Ball from "./Ball";
+import Start from "./Start";
 import "./Game.css"
 
 function Game() {
@@ -9,6 +11,7 @@ function Game() {
     
     <div className="game" ref={boardRef}>
       <Ball boardRef={boardRef}/>
+      <Start/>
     </div>
   );
 }
