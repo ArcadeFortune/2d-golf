@@ -9,12 +9,14 @@
   justify-content: center;
 }
 
-.ball {
+.ball {  
+  background-image: url('../Textures/Ball.png');
+  background-size: cover;
+
   position: absolute;
   width: 20px;
   height: 20px;
   top: var(--golf-position);
-  background-color: white;
   
   animation-name:            zoom,                         fly,                            fly-black;
   animation-duration:        1.3s,                         1.3s,                           1.3s;  
