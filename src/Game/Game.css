@@ -1,11 +1,13 @@
 .game {
   position: relative;
   height: 100vh;
+  
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .ball {
+  position: absolute;
   width: 20px;
   height: 20px;
   background-color: white;

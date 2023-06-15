@@ -5,10 +5,10 @@ import "./Game.css";
 
 function Game() {
   const [ObstacleList, setObstacleList] = useState([]);
-  const ballRef = useRef(null);
+  const boardRef = useRef(null);
   return (
-    <div className="game">
-      <Ball ref={ballRef}/>
+    <div className="game" ref={boardRef}>
+      <Ball boardRef={boardRef}/>
     </div>
   );
 }
