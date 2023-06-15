@@ -1,12 +1,14 @@
 import React from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import Ball from "./Ball";
 import "./Game.css";
 
 function Game() {
+  const [ObstacleList, setObstacleList] = useState([]);
+  const ballRef = useRef(null);
   return (
     <div className="game">
-      <Ball />
+      <Ball ref={ballRef}/>
     </div>
   );
 }

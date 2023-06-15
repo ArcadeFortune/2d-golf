@@ -1,8 +1,11 @@
+ 
 import "./Game.css";
 
-function Ball() {
+
+function Ball({ref}) {
+  console.log(ref);
   return (
-    <div className="ball"></div>
+    <div className="ball" ref={ref}></div>
   );
 }
 
