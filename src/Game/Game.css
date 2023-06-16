@@ -16,8 +16,6 @@
   background-image: url("../Textures/Ball.png");
   background-size: cover;
 
-  width: 20px;
-  height: 20px;
   top: var(--golf-position);
 
   animation-name: zoom, fly, fly-black;

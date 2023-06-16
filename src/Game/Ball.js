@@ -1,10 +1,16 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./Game.css";
 
-function Ball({ boardRef }) {
-  const ballRef = useRef(null);
+function Ball({ gameState }) {
+  const size = '20px'
+  const style = {
+    left: gameState.ballX + "px",
+    width: size,
+    height: size,
+  }
+  console.log(gameState)
   return (
-    <div className={"ball"} ref={ballRef}>
+    <div className={"ball"} style={style}>
       {" "}
     </div>
   );
