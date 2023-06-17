@@ -8,10 +8,14 @@ export const GlobalProvider = ({ children }) => {
     'ballX': window.innerWidth/2,
     'score': 1000,
   });
+
+  const [gameRules, setGameRules] = useState({
+    playerSize: 20,
+    speed: 5
+  })
   
-  // Provide the global variable and the update function to the child components
   return (
-    <GlobalContext.Provider value={{ gameState, setGameState }}>
+    <GlobalContext.Provider value={{ gameState, setGameState, gameRules }}>
       {children}
     </GlobalContext.Provider>
   );

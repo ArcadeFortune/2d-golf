@@ -73,7 +73,7 @@ function Game() {
   return (
     
     <div className="game" >
-      <Ball gameState={gameState}/>
+      <Ball/>
       <Start/>
     </div>
   );

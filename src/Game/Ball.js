@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext} from "react";
 import "./Game.css";
 
-function Ball({ gameState }) {
-  const size = '20px'
+import { GlobalContext } from "../Globals";
+
+function Ball() {  
+  const { gameState, gameRules } = useContext(GlobalContext);
+  
   const style = {
-    left: gameState.ballX + "px",
-    width: size,
-    height: size,
+    left: gameState.ballX,
+    width: gameRules.playerSize,
+    height: gameRules.playerSize,
   }
   console.log(gameState)
   return (
