@@ -1,22 +1,17 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import "./Game.css";
 
 import { GlobalContext } from "../Globals";
 
-function Ball() {  
+function Ball() {
   const { gameState, gameRules } = useContext(GlobalContext);
-  
+
   const style = {
     left: gameState.ballX,
     width: gameRules.playerSize,
     height: gameRules.playerSize,
-  }
-  console.log(gameState)
-  return (
-    <div className={"ball"} style={style}>
-      {" "}
-    </div>
-  );
+  };
+  return <div className={"ball"} style={style} />;
 }
 
 export default Ball;
