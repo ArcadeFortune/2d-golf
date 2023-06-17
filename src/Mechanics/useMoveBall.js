@@ -6,10 +6,10 @@ function useMoveBall() {
   
   function moveBall() {
     if (gameState.movingLeft && gameState.ballX > gameRules.playerSize) {
-      setGameState((prevState) => ({ ...prevState, ballX: prevState.ballX - 1 }));
+      setGameState((prevState) => ({ ...prevState, ballX: prevState.ballX - gameRules.speed }));
     }
     if (gameState.movingRight && gameState.ballX < document.body.offsetWidth - gameRules.playerSize*2) {
-      setGameState((prevState) => ({ ...prevState, ballX: prevState.ballX + 1 }));
+      setGameState((prevState) => ({ ...prevState, ballX: prevState.ballX + gameRules.speed }));
     }
   }
 

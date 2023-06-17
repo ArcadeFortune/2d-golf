@@ -4,9 +4,14 @@ import { GlobalContext } from "../Globals";
 function useAddScore() {
   const { setGameState, gameRules } = useContext(GlobalContext);
 
-  function addScore() {
-    setGameState((others) => ({ ...others, score: others.score + Math.floor(1/gameRules.FPS*1000)/1000 }));
-  };
+  function addScore(isBonus) {
+    let bonus = 0;
+    if (isBonus) bonus = 20
+    setGameState((others) => ({
+      ...others,
+      score: others.score + Math.floor(1 / gameRules.FPS * 1000) / 1000 + bonus,
+    }));
+  }
 
   return addScore;
 }

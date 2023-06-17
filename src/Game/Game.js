@@ -26,20 +26,17 @@ function Game() {
     const delay = 1300; // Wati for the ball to fall down
     const timer = setTimeout(() => {
 
-
-
       // The Game starts here
-      const delay2 = Math.floor(1/gameRules.FPS*1000)
+      const delay = Math.floor(1/gameRules.FPS*1000)
       const interval = setInterval(() => {
         addScore()
-        // console.log(gameState.movingLeft)
-
 
         // if (condition) {
         //   clearInterval(interval);
-        // }                
+        // }     
+                   
         // Cleanup
-      }, delay2);  
+      }, delay);  
       return () => clearInterval(interval); 
     }, delay);
     return () => clearTimeout(timer);
@@ -58,7 +55,7 @@ function Game() {
     function keyReleased(event) {
       if (event.key === 'ArrowLeft') {
         setGameState((others) => ({...others, 'movingLeft': false}))
-      }        
+        }        
       if (event.key === 'ArrowRight') {
         setGameState((others) => ({...others, 'movingRight': false}))
       }
@@ -75,8 +72,11 @@ function Game() {
 
   // Ball Movement
   useEffect(() => {
-    moveBall();
-  }, [gameState]);
+    
+    // console.log(gameState.movingLeft)
+    console.log('Current score: ' + gameState.score)
+    moveBall()
+  }, [gameState.score]);
 
   return (    
     <div className="game" >

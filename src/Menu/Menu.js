@@ -9,6 +9,7 @@ function Menu() {
   function start() {
     // Starts the game when the specific button is clicked
     setInGame(true);
+    console.log('Watch Date A Live')
   }
   return (
     inGame ? <Game /> : <StartAnimation startFunction={start}/>
