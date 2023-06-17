@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
-
 function StartAnimation({ startFunction }) {
   const [animationSkipped, setAnimationSkipped] = useState(false);
 
   function skipAnimation() {
     setAnimationSkipped(true);
   }
+  
   return (
     <>
       <div onClick={skipAnimation} className="mainMenu">
@@ -20,7 +20,6 @@ function StartAnimation({ startFunction }) {
           <span className={animationSkipped ? "" : "playMeText"}>
             I'm sure you want to play my <br /> <strong>BETTER</strong> GOLF
           </span>
-
           <br />
           <br />
           <br />
