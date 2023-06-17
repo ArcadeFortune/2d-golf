@@ -1,11 +1,12 @@
 import React from "react";
 import { useEffect, useContext } from "react";
+
 // Global Variables
 import { GlobalContext } from "../Globals";
 
 // Ball
 import Ball from "./Ball";
-import MoveBall from "../Mechanics/MoveBall";
+import useMoveBall from "../Mechanics/useMoveBall";
 import "./Game.css"
 
 // Misc
@@ -18,6 +19,7 @@ function Game() {
 
   // Mechanics
   const addScore = useAddScore();
+  const moveBall = useMoveBall();
 
   // Main Loop
   useEffect(() => {
@@ -31,7 +33,6 @@ function Game() {
       const interval = setInterval(() => {
         addScore()
         // console.log(gameState.movingLeft)
-        // console.log(gameState.score)
 
 
         // if (condition) {
@@ -42,44 +43,40 @@ function Game() {
       return () => clearInterval(interval); 
     }, delay);
     return () => clearTimeout(timer);
-  }, []);
+  },);
 
   // Move Ball
   useEffect(() => {
-      function keyPressed(event) {
-        if (event.key === 'ArrowLeft') {
-          setGameState((others) => ({...others, 'movingLeft': true}))
-          
-          console.log('ArrowLeft', gameState.movingLeft)
-        }
-        
+    function keyPressed(event) {
+      if (event.key === 'ArrowLeft') {
+        setGameState((others) => ({...others, 'movingLeft': true}))
+      }        
+      if (event.key === 'ArrowRight') {
+        setGameState((others) => ({...others, 'movingRight': true}))
       }
-      function keyReleased(event) {
-        if (event.key === 'ArrowLeft') {
-          // setMovingLeft(false);
-        }
-        
+    }
+    function keyReleased(event) {
+      if (event.key === 'ArrowLeft') {
+        setGameState((others) => ({...others, 'movingLeft': false}))
+      }        
+      if (event.key === 'ArrowRight') {
+        setGameState((others) => ({...others, 'movingRight': false}))
       }
-    // const keyPressed = (event) => {
-    //   if (event.key === 'ArrowLeft') {
-    //     MoveBall();
-    //   } else if (event.key === 'ArrowRight') {
-    //     MoveBall();
-    //   }
-    // };
+    }
+
+    // Cleanup
     document.addEventListener('keydown', keyPressed);
     document.addEventListener('keyup', keyReleased);
-
     return () => {
       document.removeEventListener('keydown', keyPressed);
       document.removeEventListener('keyup', keyReleased);
+      };
+  },)
 
-    };
-},)
-
-useEffect(() => {
-  console.log(gameState.score);
-}, [gameState]);
+  // Ball Movement
+  useEffect(() => {
+    moveBall();
+  }, [gameState]);
 
   return (    
     <div className="game" >
