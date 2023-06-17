@@ -1,20 +1,24 @@
 import React from "react";
-import { useState, useEffect, createContext } from "react";
+import { useEffect, useContext } from "react";
 
+// Global Variables
+import { GlobalContext } from "../Globals";
+
+// Ball
 import Ball from "./Ball";
-import Start from "./Start";
 import "./Game.css"
 
-import ScoreCounter from "./ScoreCounter";
+// Misc
+import ScoreCounter from "../Mechanics/ScoreCounter";
+import Start from "./Start";
+
 
 function Game() {
-  const [gameState, setGameState] = useState({
-    'ballX': window.innerWidth/2,
-    'score': 0,
-  });
+  // Global Variables
+  const { gameState, setGameState } = useContext(GlobalContext);
+  
   useEffect(() => {
-    
-    
+       
 
         // const handleKeyDown = (event) => {
         //   if (event.key === 'Enter') {
@@ -49,30 +53,14 @@ function Game() {
       const delay = 16; // 60 FPS
       const interval = setInterval(() => {   
         ScoreCounter(setGameState)
-        // setGameState((others) => ({...others, 'score': others.score + 0.016}))
-        
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    //     // Clear the interval after the desired number of iterations
-    //     // For an infinite loop, you can omit this line
-    //     // if (condition) {
-    //     //   clearInterval(interval);
-    //     // }     
+        // if (condition) {
+        //   clearInterval(interval);
+        // }     
            
         // Cleanup
       }, delay);  
