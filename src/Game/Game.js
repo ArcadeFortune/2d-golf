@@ -7,6 +7,7 @@ import { GlobalContext } from "../Globals"
 // Ball
 import Ball from "./Ball/Ball";
 import useMoveBall from "./Mechanics/useMoveBall";
+import Start from "./Ball/Start";
 import "./Game.css"
 
 // Pole
@@ -16,64 +17,68 @@ import useAddPole from "./Mechanics/useAddPole";
 // Misc
 import useAddScore from "./Mechanics/useAddScore";
 import useEventListener from "./Mechanics/useEventListener";
-import Start from "./Ball/Start";
 
 function Game() {
+
   // Global Variables
   const { gameState, setGameState, gameRules } = useContext(GlobalContext);
 
-  // Pole
+  // Custom Hooks
   const addPole = useAddPole();
-
-  // Mechanics
   const addScore = useAddScore();
   const checkMovement = useEventListener();
   const moveBall = useMoveBall();
-  
-  // Main Loop
-  useEffect(() => {    
+
+  function mainLoop() { // This is what happens on every frame
     moveBall()
     addPole()
-    // console.log('Current score: ' + gameState.score)
+    console.log('Current score: ' + gameState.score)
     // console.log(gameState.poles)
-  }, [gameState.score]); // Run this code on every tick
+  }
+  
+  function tick() {
+    const delay = Math.floor(1/gameRules.FPS*1000) // This is the definition of one tick
+    const interval = setInterval(() => {
+      addScore()
+      // I cant move the ball here, because it is a setInterval which does not update from setState, so another useEffect is in need
+
+      // if (condition) {
+      //   clearInterval(interval);
+      // }
+
+      // Cleanup
+    }, process.env.NODE_ENV === 'development' ? delay * 2 : delay); // Because React has a reason to not be my favourite language, will it render components twice in development mode :)
+
+    return () => clearInterval(interval);    
+  }
+
+  function startCheckingMovement() {
+    checkMovement()
+  }
+
+  function afterAnimation(callback) {
+    const delay = gameRules.startAnimationDuration; // Wait for the ball to fall down
+    const timer = setTimeout(() => {
+      callback()
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }
+
+  // Main Loop
+  useEffect(() => {
+    mainLoop()
+  }, [gameState.score]); // Run the mainLoop() on every tick
 
   // Control the main loop
   useEffect(() => {
-    const delay = gameRules.startAnimationDuration; // Wati for the ball to fall down
-    const timer = setTimeout(() => {
-
-      // The Game starts here
-      const delay = Math.floor(1/gameRules.FPS*1000) // This is the definition of one tick
-      const interval = setInterval(() => {
-        addScore()
-        // I cant move the ball here, because it is a setInterval which does not update from setState, so another useEffect is in need
-        // if (condition) {
-        //   clearInterval(interval);
-        // }     
-                   
-        // Cleanup
-      }, delay);  
-      return () => clearInterval(interval);
-    }, delay);
-    return () => clearTimeout(timer);
-  },);
+    afterAnimation(tick) // After the animtion, it starts ticking
+  },[]);
 
   // Move Ball with arrowkeys
   useEffect(() => {
-    const delay = gameRules.startAnimationDuration; // Wati for the ball to fall down
-    const timer = setTimeout(() => {      
-      setGameState((others) => ({
-        ...others,
-        poles: [
-          ...others.poles,
-          { x: 20, y: gameRules.objectStartingHeight, key: 'id' },
-        ],
-      }));
-      checkMovement() // This function sets the variables 'movingLeft' and 'movingRight' in the global state accordingly
-    }, delay);
-    return () => clearTimeout(timer);
-  },);
+    afterAnimation(startCheckingMovement)      
+  },[]);
 
   return (    
     <div className="game" >

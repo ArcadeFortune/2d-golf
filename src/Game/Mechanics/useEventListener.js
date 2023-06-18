@@ -22,7 +22,7 @@ function useEventListener() {
       }
     }
 
-    // Cleanup
+    // Cleanup for the useEffect()
     document.addEventListener('keydown', keyPressed);
     document.addEventListener('keyup', keyReleased);
     return () => {
