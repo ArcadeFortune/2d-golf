@@ -38,7 +38,7 @@ function Game() {
     // console.log(gameState.poles)
   }, [gameState.score]); // Run this code on every tick
 
-  // Main Loop
+  // Control the main loop
   useEffect(() => {
     const delay = gameRules.startAnimationDuration; // Wati for the ball to fall down
     const timer = setTimeout(() => {
@@ -63,6 +63,13 @@ function Game() {
   useEffect(() => {
     const delay = gameRules.startAnimationDuration; // Wati for the ball to fall down
     const timer = setTimeout(() => {      
+      setGameState((others) => ({
+        ...others,
+        poles: [
+          ...others.poles,
+          { x: 20, y: gameRules.objectStartingHeight, key: 'id' },
+        ],
+      }));
       checkMovement() // This function sets the variables 'movingLeft' and 'movingRight' in the global state accordingly
     }, delay);
     return () => clearTimeout(timer);

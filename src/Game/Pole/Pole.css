@@ -1,3 +1,4 @@
 .pole {
-  background-color: red;
+  background-image: url('../../Textures/pole.png');
+  background-size: cover;
 }

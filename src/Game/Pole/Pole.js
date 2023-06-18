@@ -6,10 +6,10 @@ import { GlobalContext } from "../../Globals";
 export default function Pole({ pole }) {
   // console.log(pole.key)
   const { gameRules } = useContext(GlobalContext);
-  
+
   const style = {
-    width: gameRules.poleSize,
-    height: gameRules.poleSize,
+    width: 60,
+    height: 91,
     position: "absolute",
     left: pole.x,
     top: pole.y,
