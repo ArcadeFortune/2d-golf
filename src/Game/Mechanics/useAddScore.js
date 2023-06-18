@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../Globals";
+import { GlobalContext } from "../../Globals";
 
 function useAddScore() {
   const { setGameState, gameRules } = useContext(GlobalContext);

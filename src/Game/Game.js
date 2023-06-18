@@ -2,24 +2,39 @@ import React from "react";
 import { useEffect, useContext } from "react";
 
 // Global Variables
-import { GlobalContext } from "../Globals";
+import { GlobalContext } from "../Globals"
 
 // Ball
 import Ball from "./Ball";
-import useMoveBall from "../Mechanics/useMoveBall";
+import useMoveBall from "./Mechanics/useMoveBall";
 import "./Game.css"
 
+// Pole
+// import Pole from "./Pole";
+import useAddPole from "./Mechanics/useAddPole";
+
 // Misc
-import useAddScore from "../Mechanics/useAddScore";
+import useAddScore from "./Mechanics/useAddScore";
+import useEventListener from "./Mechanics/useEventListener";
 import Start from "./Start";
 
 function Game() {
   // Global Variables
   const { gameState, setGameState, gameRules } = useContext(GlobalContext);
 
+  // Pole
+  const addPole = useAddPole();
+
   // Mechanics
   const addScore = useAddScore();
+  const checkMovement = useEventListener();
   const moveBall = useMoveBall();
+  
+  // Main Loop
+  useEffect(() => {    
+    // console.log('Current score: ' + gameState.score)
+    moveBall()
+  }, [gameState.score]); // Run this code on every tick
 
   // Main Loop
   useEffect(() => {
@@ -27,10 +42,10 @@ function Game() {
     const timer = setTimeout(() => {
 
       // The Game starts here
-      const delay = Math.floor(1/gameRules.FPS*1000)
+      const delay = Math.floor(1/gameRules.FPS*1000) // This is the definition of one tick
       const interval = setInterval(() => {
         addScore()
-
+        // I cant move the ball here, because it is a setInterval which does not update from setState, so another useEffect is in need
         // if (condition) {
         //   clearInterval(interval);
         // }     
@@ -42,44 +57,14 @@ function Game() {
     return () => clearTimeout(timer);
   },);
 
-  // Move Ball
+  // Move Ball with arrowkeys
   useEffect(() => {
     const delay = gameRules.startAnimationDuration; // Wati for the ball to fall down
-    const timer = setTimeout(() => {
-      function keyPressed(event) {
-        if (event.key === 'ArrowLeft') {
-          setGameState((others) => ({...others, 'movingLeft': true}))
-        }        
-        if (event.key === 'ArrowRight') {
-          setGameState((others) => ({...others, 'movingRight': true}))
-        }
-      }
-      function keyReleased(event) {
-        if (event.key === 'ArrowLeft') {
-          setGameState((others) => ({...others, 'movingLeft': false}))
-          }        
-        if (event.key === 'ArrowRight') {
-          setGameState((others) => ({...others, 'movingRight': false}))
-        }
-      }
-
-      // Cleanup
-      document.addEventListener('keydown', keyPressed);
-      document.addEventListener('keyup', keyReleased);
-      return () => {
-        document.removeEventListener('keydown', keyPressed);
-        document.removeEventListener('keyup', keyReleased);
-      };
+    const timer = setTimeout(() => {      
+      checkMovement() // This function sets the variables 'movingLeft' and 'movingRight' in the global state accordingly
     }, delay);
     return () => clearTimeout(timer);
-  },)
-
-  // Ball Movement
-  useEffect(() => {    
-    // console.log(gameState.movingLeft)
-    console.log('Current score: ' + gameState.score)
-    moveBall()
-  }, [gameState.score]); // run this code on every tick
+  },);
 
   return (    
     <div className="game" >
