@@ -5,6 +5,8 @@ export const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
   // These are the global variables
   const [gameState, setGameState] = useState({
+    poles: [],
+    obstacles: [],
     ballX: document.body.offsetWidth / 2,
     score: 0,
     movingLeft: false,

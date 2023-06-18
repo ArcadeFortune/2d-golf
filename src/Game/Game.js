@@ -5,7 +5,7 @@ import { useEffect, useContext } from "react";
 import { GlobalContext } from "../Globals"
 
 // Ball
-import Ball from "./Ball";
+import Ball from "./Ball/Ball";
 import useMoveBall from "./Mechanics/useMoveBall";
 import "./Game.css"
 
@@ -16,7 +16,7 @@ import useAddPole from "./Mechanics/useAddPole";
 // Misc
 import useAddScore from "./Mechanics/useAddScore";
 import useEventListener from "./Mechanics/useEventListener";
-import Start from "./Start";
+import Start from "./Ball/Start";
 
 function Game() {
   // Global Variables
@@ -34,6 +34,8 @@ function Game() {
   useEffect(() => {    
     // console.log('Current score: ' + gameState.score)
     moveBall()
+    addPole()
+    console.log(gameState.poles)
   }, [gameState.score]); // Run this code on every tick
 
   // Main Loop
@@ -70,6 +72,7 @@ function Game() {
     <div className="game" >
       <Ball/>
       <Start/>
+      {gameState.poles}
     </div>
   );
 }
