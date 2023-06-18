@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { GlobalContext } from "../Globals";
+import { GlobalContext } from "../../Globals";
+
+import "./Start.css";
 
 export default function Start() {  
   const [pos, setPos] = useState(0);

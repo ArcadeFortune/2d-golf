@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import "./Game.css";
+import "./Ball.css";
 
-import { GlobalContext } from "../Globals";
+import { GlobalContext } from "../../Globals";
 
 function Ball() {
   const { gameState, gameRules } = useContext(GlobalContext);
