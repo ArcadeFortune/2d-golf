@@ -72,7 +72,7 @@ function Game() {
     <div className="game" >
       <Ball/>
       <Start/>
-      {gameState.poles}
+      {/* {gameState.poles} */}
     </div>
   );
 }
