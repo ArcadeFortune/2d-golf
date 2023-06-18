@@ -72,8 +72,8 @@ function Game() {
     <div className="game" >
       <Ball/>
       <Start/>
-      {gameState.poles.map((poles) => (
-        <Pole poles={poles} {...poles} />  // WHAT IS THIS {...poles} WHY IS IT IMPORTANT?!?!
+      {gameState.poles.map((pole) => (
+        <Pole key={pole.key} pole={pole} /> // x and y defined in pole in Pole.js
       ))}
     </div>
   );

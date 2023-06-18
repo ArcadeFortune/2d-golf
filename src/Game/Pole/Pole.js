@@ -3,19 +3,20 @@ import "./Pole.css";
 
 import { GlobalContext } from "../../Globals";
 
-export default function Pole({ poles }) {
+export default function Pole({ pole }) {
+  // console.log(pole.key)
   const { gameRules } = useContext(GlobalContext);
+  
   const style = {
     width: gameRules.poleSize,
     height: gameRules.poleSize,
     position: "absolute",
-    left: poles.x,
-    top: poles.y,
+    left: pole.x,
+    top: pole.y,
   };
-  console.log(poles.key);
+
   return (
     <div
-      key={poles.key}
       style={style}
       className="pole"
     ></div>
