@@ -23,7 +23,7 @@ function Game() {
 
   // Main Loop
   useEffect(() => {
-    const delay = 1300; // Wati for the ball to fall down
+    const delay = gameRules.startAnimationDuration; // Wati for the ball to fall down
     const timer = setTimeout(() => {
 
       // The Game starts here
@@ -37,46 +37,49 @@ function Game() {
                    
         // Cleanup
       }, delay);  
-      return () => clearInterval(interval); 
+      return () => clearInterval(interval);
     }, delay);
     return () => clearTimeout(timer);
   },);
 
   // Move Ball
   useEffect(() => {
-    function keyPressed(event) {
-      if (event.key === 'ArrowLeft') {
-        setGameState((others) => ({...others, 'movingLeft': true}))
-      }        
-      if (event.key === 'ArrowRight') {
-        setGameState((others) => ({...others, 'movingRight': true}))
-      }
-    }
-    function keyReleased(event) {
-      if (event.key === 'ArrowLeft') {
-        setGameState((others) => ({...others, 'movingLeft': false}))
+    const delay = gameRules.startAnimationDuration; // Wati for the ball to fall down
+    const timer = setTimeout(() => {
+      function keyPressed(event) {
+        if (event.key === 'ArrowLeft') {
+          setGameState((others) => ({...others, 'movingLeft': true}))
         }        
-      if (event.key === 'ArrowRight') {
-        setGameState((others) => ({...others, 'movingRight': false}))
+        if (event.key === 'ArrowRight') {
+          setGameState((others) => ({...others, 'movingRight': true}))
+        }
       }
-    }
+      function keyReleased(event) {
+        if (event.key === 'ArrowLeft') {
+          setGameState((others) => ({...others, 'movingLeft': false}))
+          }        
+        if (event.key === 'ArrowRight') {
+          setGameState((others) => ({...others, 'movingRight': false}))
+        }
+      }
 
-    // Cleanup
-    document.addEventListener('keydown', keyPressed);
-    document.addEventListener('keyup', keyReleased);
-    return () => {
-      document.removeEventListener('keydown', keyPressed);
-      document.removeEventListener('keyup', keyReleased);
+      // Cleanup
+      document.addEventListener('keydown', keyPressed);
+      document.addEventListener('keyup', keyReleased);
+      return () => {
+        document.removeEventListener('keydown', keyPressed);
+        document.removeEventListener('keyup', keyReleased);
       };
+    }, delay);
+    return () => clearTimeout(timer);
   },)
 
   // Ball Movement
-  useEffect(() => {
-    
+  useEffect(() => {    
     // console.log(gameState.movingLeft)
     console.log('Current score: ' + gameState.score)
     moveBall()
-  }, [gameState.score]);
+  }, [gameState.score]); // run this code on every tick
 
   return (    
     <div className="game" >

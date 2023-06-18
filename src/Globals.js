@@ -12,6 +12,7 @@ export const GlobalProvider = ({ children }) => {
   });
   const [gameRules, setGameRules] = useState({
     FPS: 60, // FPS is still sort of hardcoded to 60 bc of the scoresystem
+    startAnimationDuration: 1300, // Make sure to update the CSS aswell
     playerSize: 20,
     speed: 20,
     poleBonusScore: 20,
