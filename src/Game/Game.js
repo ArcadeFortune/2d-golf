@@ -10,7 +10,7 @@ import useMoveBall from "./Mechanics/useMoveBall";
 import "./Game.css"
 
 // Pole
-// import Pole from "./Pole";
+import Pole from "./Pole/Pole"
 import useAddPole from "./Mechanics/useAddPole";
 
 // Misc
@@ -32,10 +32,10 @@ function Game() {
   
   // Main Loop
   useEffect(() => {    
-    // console.log('Current score: ' + gameState.score)
     moveBall()
     addPole()
-    console.log(gameState.poles)
+    // console.log('Current score: ' + gameState.score)
+    // console.log(gameState.poles)
   }, [gameState.score]); // Run this code on every tick
 
   // Main Loop
@@ -72,7 +72,9 @@ function Game() {
     <div className="game" >
       <Ball/>
       <Start/>
-      {/* {gameState.poles} */}
+      {gameState.poles.map((poles) => (
+        <Pole poles={poles} {...poles} />  // WHAT IS THIS {...poles} WHY IS IT IMPORTANT?!?!
+      ))}
     </div>
   );
 }

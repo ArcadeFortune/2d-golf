@@ -1,17 +1,23 @@
 import React, { useContext } from "react";
-import './Pole.css'
+import "./Pole.css";
 
 import { GlobalContext } from "../../Globals";
 
-export default function Pole(key) {
-  const { gameState, gameRules } = useContext(GlobalContext);
+export default function Pole({ poles }) {
+  const { gameRules } = useContext(GlobalContext);
   const style = {
-    left: gameState.ballX,
     width: gameRules.poleSize,
     height: gameRules.poleSize,
+    position: "absolute",
+    left: poles.x,
+    top: poles.y,
   };
+  console.log(poles.key);
   return (
-    <div key={key} className="pole" style={{width:10, height:10, backgroundColor:"white", top:200, position: "absolute"}}/>
-  )
+    <div
+      key={poles.key}
+      style={style}
+      className="pole"
+    ></div>
+  );
 }
-

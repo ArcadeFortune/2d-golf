@@ -11,6 +11,7 @@ function Ball() {
     width: gameRules.playerSize,
     height: gameRules.playerSize,
   };
+  
   return <div className={"ball"} style={style} />;
 }
 
