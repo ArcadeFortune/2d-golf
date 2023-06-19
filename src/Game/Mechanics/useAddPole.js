@@ -15,9 +15,9 @@ function useAddPole() {
     if (randomNumber === 1) {
       setGameState((others) => ({
         ...others,
-        poles: [
-          ...others.poles,
-          { x: x, y: gameRules.objectStartingHeight, key: id },
+        objects: [
+          ...others.objects,
+          { key: id, x: x, y: gameRules.objectStartingHeight, type: "pole"},
         ],
       }));
     }

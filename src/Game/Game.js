@@ -17,6 +17,7 @@ import useAddPole from "./Mechanics/useAddPole";
 // Misc
 import useAddScore from "./Mechanics/useAddScore";
 import useEventListener from "./Mechanics/useEventListener";
+import useMoveObjects from "./Mechanics/useMoveObjects";
 
 function Game() {
 
@@ -28,12 +29,14 @@ function Game() {
   const addScore = useAddScore();
   const checkMovement = useEventListener();
   const moveBall = useMoveBall();
+  const moveObjects = useMoveObjects();
 
   function mainLoop() { // This is what happens on every frame
     moveBall()
+    moveObjects()
     addPole()
-    console.log('Current score: ' + gameState.score)
-    // console.log(gameState.poles)
+    // console.log('Current score: ' + gameState.score)
+    // console.log(gameState.objects)
   }
   
   function tick() {
@@ -84,7 +87,7 @@ function Game() {
     <div className="game" >
       <Ball/>
       <Start/>
-      {gameState.poles.map((pole) => (
+      {gameState.objects.map((pole) => (
         <Pole key={pole.key} pole={pole} /> // x and y defined in pole in Pole.js
       ))}
     </div>
