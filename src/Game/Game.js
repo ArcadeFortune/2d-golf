@@ -18,6 +18,7 @@ import useAddPole from "./Mechanics/useAddPole";
 import useAddScore from "./Mechanics/useAddScore";
 import useEventListener from "./Mechanics/useEventListener";
 import useMoveObjects from "./Mechanics/useMoveObjects";
+import useUpdateScreenSize from "./Mechanics/useCheckEnvironment";
 
 function Game() {
 
@@ -30,6 +31,7 @@ function Game() {
   const checkMovement = useEventListener();
   const moveBall = useMoveBall();
   const moveObjects = useMoveObjects();
+  const updateScreenSize = useUpdateScreenSize();
 
   function mainLoop() { // This is what happens on every frame
     moveBall()
@@ -37,6 +39,7 @@ function Game() {
     addPole()
     // console.log('Current score: ' + gameState.score)
     // console.log(gameState.objects)
+    // console.log(gameState.ballY)
   }
   
   function tick() {

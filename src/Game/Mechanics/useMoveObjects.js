@@ -15,10 +15,15 @@ function useMoveObjects() {
         
       })),
     }));
-    
+    // Im condisering to move this to a seperate function, but I dont know if it is worth it
     gameState.objects.map((object) => {
       if (object.y < gameRules.objectDeletionHeight) {
         removeObject(object)
+      }
+
+      if (object.x < gameState.ballX + gameRules.playerSize && object.x + gameRules.poleSize > gameState.ballX
+        && object.y < gameState.ballY) {
+        console.log("hit");
       }
       return null;
     })

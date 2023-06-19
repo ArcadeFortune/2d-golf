@@ -1,4 +1,5 @@
-const log = () => { console.log(haha[Math.floor(Math.random() * haha.length)]) }
+const areYouFeelingBadAlready = () => { console.log(haha[Math.floor(Math.random() * haha.length)]) }
+
 const haha = [
   "You missed a flagpole, c'mon do better.",
   "How could you miss that?",
@@ -13,5 +14,5 @@ const haha = [
 ]
 
 export default function randomHaha() {
-  log()  
+  areYouFeelingBadAlready()  
 }

@@ -5,8 +5,9 @@ import { GlobalContext } from "../../Globals";
 
 function Ball() {
   const { gameState, gameRules } = useContext(GlobalContext);
-
+  console.log()
   const style = {
+    top: gameState.ballY,
     left: gameState.ballX,
     width: gameRules.playerSize,
     height: gameRules.playerSize,
