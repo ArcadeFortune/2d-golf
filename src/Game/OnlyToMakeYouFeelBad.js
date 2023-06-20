@@ -11,6 +11,7 @@ const haha = [
   "Imagine missing the easiest flagpole there is.",
   "Seeing you miss that flagpole, makes me wonder where your skill went.\nMaybe you never had any.",
   "YOU MISSED ONE!",
+  "Hole in one, more like hole in none.",
 ]
 
 export default function randomHaha() {

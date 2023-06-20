@@ -3,11 +3,11 @@ import { GlobalContext } from "../../Globals";
 
 import randomHaha from "../OnlyToMakeYouFeelBad"
 import useRemoveObject from "./useRemoveObject";
-import useAddScore from "./useAddScore"
-;
+import usePoleIsHit from "./usePoleIsHit";
+
 function useMoveObjects() {
   const removeObject = useRemoveObject()
-  const addScore = useAddScore()
+  const poleIsHit = usePoleIsHit()
   const { gameState, setGameState, gameRules } = useContext(GlobalContext);
 
   function moveObjects() {
@@ -34,8 +34,7 @@ function useMoveObjects() {
         && object.y + gameRules.poleHeight/1.5 < gameState.ballY
         && object.y + gameRules.poleHeight > gameState.ballY
         ) {
-        removeObject(object)
-        addScore(true)
+          poleIsHit(object)
       }
       return null;
     })

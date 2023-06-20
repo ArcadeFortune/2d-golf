@@ -15,6 +15,7 @@ import Pole from "./Pole/Pole"
 import useAddPole from "./Mechanics/useAddPole";
 
 // Misc
+import Text from "./Text/Text";
 import useAddScore from "./Mechanics/useAddScore";
 import useEventListener from "./Mechanics/useEventListener";
 import useMoveObjects from "./Mechanics/useMoveObjects";
@@ -37,7 +38,7 @@ function Game() {
     moveBall()
     moveObjects()
     addPole()
-    console.log('Current score: ' + gameState.score)
+    // console.log('Current score: ' + gameState.score)
     // console.log(gameState.objects)
     // console.log(gameState.ballY)
   }
@@ -93,6 +94,10 @@ function Game() {
       {gameState.objects.map((pole) => (
         <Pole key={pole.key} pole={pole} /> // x and y defined in pole in Pole.js
       ))}
+      {gameState.textfields.map((text) => {
+        console.log(text)
+        return (<Text key={text.key} text={text} />) // x and y defined in pole in Pole.js
+})}
     </div>
   );
 }
