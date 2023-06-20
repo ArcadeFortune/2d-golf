@@ -9,10 +9,10 @@ function useAddPole() {
 
   const generatePos = useGeneratePos();
 
-  function addPole() {
+  function addPole(dev) {
     const { x, id } = generatePos();
     var randomNumber = Math.floor(Math.random() * 300) + 1;
-    if (randomNumber === 1) {
+    if (dev ? 1 : randomNumber === 1) {
       setGameState((others) => ({
         ...others,
         objects: [

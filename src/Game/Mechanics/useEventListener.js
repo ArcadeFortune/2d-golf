@@ -1,7 +1,11 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../Globals";
 
+import useAddPole from "./useAddPole";
+
 function useEventListener() {
+  const addPole = useAddPole();
+
   const { setGameState, gameRules } = useContext(GlobalContext);
 
   function checkMovement() {
@@ -11,6 +15,9 @@ function useEventListener() {
       }        
       if (event.key === 'ArrowRight') {
         setGameState((others) => ({...others, 'movingRight': true}))
+      }
+      if (event.key === 'Escape') {
+        addPole(true)
       }
     }
     function keyReleased(event) {

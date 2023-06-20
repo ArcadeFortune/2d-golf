@@ -9,6 +9,7 @@ function useCheckEnvironment() {
       ...prevState,
       screenWidth: document.body.offsetWidth,
       screenHeight: document.body.offsetHeight,
+      objectStartingHeight: document.body.offsetHeight,
     }));
     setGameState((prevState) => ({
       ...prevState,

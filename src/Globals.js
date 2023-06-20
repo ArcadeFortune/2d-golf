@@ -16,13 +16,14 @@ export const GlobalProvider = ({ children }) => {
     FPS: 60, // FPS is still sort of hardcoded to 60 bc of the scoresystem
     screenWidth: 0, // These are updated in useUpdateScreenSize.js
     screenHeight: 0, 
+    objectStartingHeight: 0,
     startAnimationDuration: 1300, // Make sure to update the CSS aswell
     playerSize: 20,
-    poleSize: 30,
+    poleWidth: 60,
+    poleHeight: 91,
     speed: 20,
     objectSpeed: 5,
     poleBonusScore: 20,
-    objectStartingHeight: window.screen.height,
     objectDeletionHeight: 0 - 100,
   });
 

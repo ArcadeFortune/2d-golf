@@ -8,8 +8,8 @@ export default function Pole({ pole }) {
   const { gameRules } = useContext(GlobalContext);
 
   const style = {
-    width: 60,
-    height: 91,
+    width: gameRules.poleWidth,
+    height: gameRules.poleHeight,
     position: "absolute",
     left: pole.x,
     top: pole.y,

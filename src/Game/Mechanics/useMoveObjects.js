@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../Globals";
 
+import randomHaha from "../OnlyToMakeYouFeelBad"
 import useRemoveObject from "./useRemoveObject";
+
 function useMoveObjects() {
   const removeObject = useRemoveObject()
   const { gameState, setGameState, gameRules } = useContext(GlobalContext);
 
   function moveObjects() {
+    
+
     setGameState((prevState) => ({
       ...prevState,
       objects: prevState.objects.map((object) => ({
@@ -19,11 +23,17 @@ function useMoveObjects() {
     gameState.objects.map((object) => {
       if (object.y < gameRules.objectDeletionHeight) {
         removeObject(object)
+        if (object.type === "pole") randomHaha()
       }
-
-      if (object.x < gameState.ballX + gameRules.playerSize && object.x + gameRules.poleSize > gameState.ballX
-        && object.y < gameState.ballY) {
-        console.log("hit");
+      // console.log('ball:', gameState.ballX, '\nPole:', object.x)
+      if (
+        gameState.ballX + gameRules.playerSize > object.x 
+        && gameState.ballX + gameRules.playerSize < object.x + gameRules.poleWidth
+        && object.y + gameRules.poleHeight/1.5 < gameState.ballY
+        && object.y + gameRules.poleHeight > gameState.ballY
+        ) {
+        removeObject(object)
+        console.log('hit')
       }
       return null;
     })
