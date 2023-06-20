@@ -6,6 +6,7 @@ export const GlobalProvider = ({ children }) => {
   // These are the global variables
   const [gameState, setGameState] = useState({
     objects: [],
+    textfields: [],
     ballX: document.body.offsetWidth / 2,
     ballY: 0, //
     score: 0,
@@ -23,7 +24,7 @@ export const GlobalProvider = ({ children }) => {
     poleHeight: 91,
     speed: 20,
     objectSpeed: 5,
-    poleBonusScore: 20,
+    poleBonusScore: 10,
     objectDeletionHeight: 0 - 100,
   });
 

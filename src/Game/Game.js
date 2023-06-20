@@ -37,7 +37,7 @@ function Game() {
     moveBall()
     moveObjects()
     addPole()
-    // console.log('Current score: ' + gameState.score)
+    console.log('Current score: ' + gameState.score)
     // console.log(gameState.objects)
     // console.log(gameState.ballY)
   }

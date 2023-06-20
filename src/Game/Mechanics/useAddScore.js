@@ -6,7 +6,7 @@ function useAddScore() {
 
   function addScore(isBonus) {
     let bonus = 0;
-    if (isBonus) bonus = 20
+    if (isBonus) bonus = gameRules.poleBonusScore
     setGameState((others) => ({
       ...others,
       score: others.score + Math.floor(1 / gameRules.FPS * 1000) / 1000 + bonus,
